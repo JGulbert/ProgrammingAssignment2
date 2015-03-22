@@ -15,8 +15,11 @@ makeCacheMatrix <- function(x = matrix()) {
     # Function set to inicialize the object
     # Always the matrix is "set", inv_mat is set to NULL too
     set <- function(y) {
-        x <<- y             # Matrix
-        inv_mat <<- NULL    # Inverse
+        if (!identical(x, y)) {
+            x <<- y             # Matrix
+            inv_mat <<- NULL    # Inverse
+        } else
+            message("Matrix has not changed")
     }
     
     # Function get to return the matrix
